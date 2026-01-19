@@ -1,40 +1,82 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dog the die</title>
+    <title>site do chris</title>
     <style>
         body {
             margin: 0;
-            overflow: hidden;
             background-color: black;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Impede rolagem */
         }
-        #jumpScare {
-            display: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1000;
+
+        /* O botão que serve de isca */
+        #botao-isca {
+            padding: 20px 40px;
+            font-size: 24px;
+            cursor: pointer;
+            background-color: #333;
+            color: white;
+            border: 2px solid white;
+            border-radius: 10px;
+            z-index: 10;
+        }
+
+        /* O contêiner do susto (escondido inicialmente) */
+        #susto {
+            display: none; /* Começa invisível */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 20;
+        }
+
+        #susto img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Faz a imagem cobrir tudo */
         }
     </style>
 </head>
 <body>
-    <h1 style="color: white; text-align: center; margin-top: 20%;">Prepare-se para o jump scare!</h1>
 
-    <img id="jumpScare" src="/image/jumpscare.gif" alt="Jump Scare" width="600">
+    <button id="botao-isca">Clique para ver a imagem</button>
 
-    <audio id="audio" src="/sounds/audio.mp3" preload="auto"></audio>
+    <div id="susto">
+        <img src="LINK_DO_SEU_GIF_AQUI.gif" alt="Susto">
+    </div>
+
+    <audio id="som-susto" src="LINK_DO_SEU_AUDIO_AQUI.mp3" preload="auto"></audio>
 
     <script>
-        window.onload = function() {
-            const jumpScareImage = document.getElementById('jumpScare');
-            const audio = document.getElementById('audio');
+        const botao = document.getElementById('botao-isca');
+        const divSusto = document.getElementById('susto');
+        const audio = document.getElementById('som-susto');
 
-            jumpScareImage.style.display = 'block'; // Exibe o GIF do jump scare
-            audio.play(); // Toca o áudio
-        };
+        botao.addEventListener('click', function() {
+            // 1. Esconde o botão
+            botao.style.display = 'none';
+            
+            // 2. Mostra a div do susto
+            divSusto.style.display = 'block';
+
+            // 3. Toca o áudio (agora o navegador permite porque houve um clique)
+            audio.play();
+
+            // (Opcional) Faz o susto sumir depois de 3 segundos e recarrega a página
+            /*
+            setTimeout(() => {
+                location.reload();
+            }, 3000);
+            */
+        });
     </script>
 </body>
 </html>
