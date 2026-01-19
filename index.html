@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dog the die</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: black;
+        }
+        #jumpScare {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: white; text-align: center; margin-top: 20%;">Prepare-se para o jump scare!</h1>
+
+    <img id="jumpScare" src="/image/jumpscare.gif" alt="Jump Scare" width="600">
+
+    <audio id="audio" src="/sounds/audio.mp3" preload="auto"></audio>
+
+    <script>
+        window.onload = function() {
+            const jumpScareImage = document.getElementById('jumpScare');
+            const audio = document.getElementById('audio');
+
+            jumpScareImage.style.display = 'block'; // Exibe o GIF do jump scare
+            audio.play(); // Toca o áudio
+        };
+    </script>
+</body>
+</html>
