@@ -1,82 +1,61 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>site do chris</title>
-    <style>
-        body {
-            margin: 0;
-            background-image: url('image/sai daqui incherido.jpg');
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden; /* Impede rolagem */
-        }
-
-        /* O botão que serve de isca */
-        #botao-isca {
-            padding: 20px 40px;
-            font-size: 24px;
-            cursor: pointer;
-            background-color: #333;
-            color: white;
-            border: 2px solid white;
-            border-radius: 10px;
-            z-index: 10;
-        }
-
-        /* O contêiner do susto (escondido inicialmente) */
-        #susto {
-            display: none; /* Começa invisível */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 20;
-        }
-
-        #susto img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Faz a imagem cobrir tudo */
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>site do chris</title>
+  <style>
+    body {
+      margin: 0;
+      background-image: url('image/sai daqui incherido.jpg');
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    #botao-isca {
+      padding: 20px 40px;
+      font-size: 24px;
+      cursor: pointer;
+      background-color: #333;
+      color: white;
+      border: 2px solid white;
+      border-radius: 10px;
+      z-index: 10;
+    }
+    #susto {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 20;
+    }
+    #susto img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
 </head>
 <body>
+  <button id="botao-isca">Clique para ver os apks</button>
+  <div id="susto">
+    <img src="image/jumpscare.gif" alt="Susto">
+  </div>
+  <audio id="som-susto" src="sounds/audio.mp3" preload="auto" loop></audio>
+  <script>
+    const botao = document.getElementById('botao-isca');
+    const divSusto = document.getElementById('susto');
+    const audio = document.getElementById('som-susto');
 
-    <button id="botao-isca">Clique para ver os apks</button>
-
-    <div id="susto">
-        <img src="image/jumpscare.gif" alt="Susto">
-    </div>
-
-    <audio id="som-susto" src="sounds/audio.mp3" preload="auto"></audio>
-
-    <script>
-        const botao = document.getElementById('botao-isca');
-        const divSusto = document.getElementById('susto');
-        const audio = document.getElementById('som-susto');
-
-        botao.addEventListener('click', function() {
-            // 1. Esconde o botão
-            botao.style.display = 'none';
-            
-            // 2. Mostra a div do susto
-            divSusto.style.display = 'block';
-
-            // 3. Toca o áudio (agora o navegador permite porque houve um clique)
-            audio.play();
-
-            // (Opcional) Faz o susto sumir depois de 3 segundos e recarrega a página
-            /*
-            setTimeout(() => {
-                location.reload();
-            }, 3000);
-            */
-        });
-    </script>
+    botao.addEventListener('click', function() {
+      botao.style.display = 'none';
+      divSusto.style.display = 'block';
+      audio.play();
+    });
+  </script>
 </body>
 </html>
